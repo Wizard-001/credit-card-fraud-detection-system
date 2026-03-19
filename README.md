@@ -19,5 +19,20 @@ This project is a full-stack application for detecting credit card fraud using m
 2. Install dependencies: `npm install`.
 3. Run the development server: `npm run dev`.
 
+## Deployment Tips
+
+### 1. Backend Deployment (FastAPI)
+- Use the **root folder** for your deployment.
+- **Build Command**: `pip install -r requirements.txt`
+- **Start Command**: `uvicorn credit_card.api:app --host 0.0.0.0 --port $PORT` (Note: Point to `credit_card.api:app` because the file is in a subdirectory).
+
+### 2. Frontend Deployment (Vite/React)
+- **Build Command**: `npm install && npm run build`
+- **Output Directory**: `dist`
+- **Environment Variable**: You **must** set an environment variable named `VITE_API_URL` to your deployed backend URL.
+    - Example: `VITE_API_URL=https://your-backend-api.onrender.com`
+
+---
+
 ## Team/Author
 - [Your Name/GitHub Profile]

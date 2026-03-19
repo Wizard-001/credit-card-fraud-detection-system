@@ -14,8 +14,11 @@ function App() {
     setLoading(true);
     setError(null);
     
+    // Use environment variable for production, or fallback to localhost for development
+    const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+    
     try {
-      const response = await fetch('http://127.0.0.1:8000/predict', {
+      const response = await fetch(`${API_BASE_URL}/predict`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
