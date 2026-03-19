@@ -215,6 +215,7 @@ export const FraudForm = ({ onSubmit, isLoading }: FraudFormProps) => {
               value={formData.cust_state}
               onChange={(val) => handleSelectChange('cust_state', val)}
               placeholder="Select state..."
+              className="md:col-span-2"
             />
 
             <CustomSelect 
