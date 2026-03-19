@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-import os
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
@@ -9,7 +8,7 @@ from datetime import datetime
 
 app = FastAPI()
 
-
+# Allow any website to call this API
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -18,13 +17,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Get absolute path to the directory containing this file
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# Load model once on startup using absolute paths
-model     = joblib.load(os.path.join(BASE_DIR, 'fraud_model.pkl'))
-THRESHOLD = joblib.load(os.path.join(BASE_DIR, 'threshold.pkl'))
-FEATURES  = joblib.load(os.path.join(BASE_DIR, 'feature_columns.pkl'))
+# Load model once on startup
+model     = joblib.load('fraud_model.pkl')
+THRESHOLD = joblib.load('threshold.pkl')
+FEATURES  = joblib.load('feature_columns.pkl')
 
 STATE_POP = {
     "AL":48000,"AK":42000,"AZ":78000,"AR":42000,"CA":120000,"CO":76000,
@@ -60,8 +56,8 @@ class Transaction(BaseModel):
     category: str
     hour: int
     age: int
-    gender: str      
-    cust_state: str    
+    gender: str        # "M" or "F"
+    cust_state: str    # e.g. "CA"
     merch_state: str
 
 @app.post("/predict")

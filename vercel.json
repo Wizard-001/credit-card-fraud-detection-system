@@ -1,0 +1,18 @@
+{
+  "builds": [
+    {
+      "src": "credit_card/api.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "credit_card/api.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "credit_card/api.py"
+    }
+  ]
+}
