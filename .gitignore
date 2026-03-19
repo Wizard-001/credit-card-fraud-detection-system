@@ -1,0 +1,36 @@
+# Frontend specific
+credit_card_fraud/node_modules/
+credit_card_fraud/dist/
+credit_card_fraud/dist-ssr/
+credit_card_fraud/*.local
+credit_card_fraud/logs/
+credit_card_fraud/*.log
+
+# Backend specific
+credit_card/__pycache__/
+credit_card/.ipynb_checkpoints/
+credit_card/*.pyc
+credit_card/*.pyo
+credit_card/*.pyd
+credit_card/*.db
+credit_card/venv/
+credit_card/env/
+credit_card/.env
+
+# General/IDE
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+node_modules/
+dist/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
