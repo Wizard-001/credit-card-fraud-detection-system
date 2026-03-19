@@ -18,8 +18,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-def home():
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/docs")
+
+@app.get("/health", include_in_schema=False)
+def health():
     return {"status": "Fraud Shield API is Running", "docs": "/docs"}
 
 # Get absolute path to the directory containing this file
